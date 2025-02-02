@@ -1,5 +1,4 @@
 import chromadb
-import os
 import pprint
 
 # import chromadb.utils.embedding_functions as embedding_functions
