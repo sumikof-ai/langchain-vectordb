@@ -3,7 +3,10 @@ import logging
 import tempfile
 
 # import chromadb.utils.embedding_functions as embedding_functions
+from chromadb.utils.embedding_functions import create_langchain_embedding
 from langchain_community.embeddings import LlamafileEmbeddings
+from langchain_openai.embeddings import OpenAIEmbeddings
+from langchain_community.embeddings import OllamaEmbeddings
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 import pytest
@@ -15,8 +18,8 @@ logger = logging.getLogger(__name__)
 def vector_store():
     with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tempdir:
         persistent_client = chromadb.PersistentClient(path=tempdir)
-        embeddings = LlamafileEmbeddings(base_url="http://localhost:8080")
-
+        embeddings = LlamafileEmbeddings(base_url="http://localhost:8000")
+        # embeddings = OpenAIEmbeddings(base_url="http://localhost:8000/v1")
         vector_store_from_client = Chroma(
             client=persistent_client,
             collection_name="example_collection",

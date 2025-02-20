@@ -48,8 +48,8 @@ def test_vector_store(vector_store):
     vector_store.add_documents(documents=documents, ids=ids)
 
     results = vector_store.similarity_search_with_score(
-        # query="人工知能を使用した画期的なアイディアを教えてください。", k=3
-        query="日本文化を感じられる観光地はどこですか？", k=5
+        query="人工知能を使用した画期的なアイディアを教えてください。", k=3
+        # query="日本文化を感じられる観光地はどこですか？", k=5
     )
     for result in results:
         logger.info(result)
